@@ -49,8 +49,8 @@ export default function Navbar({ logo, links, hamburger }: NavbarProps) {
         <nav className="flex justify-between items-center w-[100%] max-w-[1440px] px-4 ">
           <div className="block lg:hidden w-[60px]">
             <HamburgerMenu
-              animationType={hamburger.animation ?? 'rotateX'}
-              stroke={hamburger.color ?? '#000000'}
+              animationType={hamburger.animation ? hamburger.animation : 'rotateX'}
+              stroke={hamburger.color ? hamburger.color : '#000000'}
               active={active}
               setActive={setActive}
             />
