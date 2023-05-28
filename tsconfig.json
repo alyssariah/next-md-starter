@@ -22,8 +22,8 @@
     ],
     "paths": {
       "@/*": ["./src/*"],
-      "@components/*": ["./src/app/components/*"],
-      "@context/*": ["./src/app/context/*"],
+      "@components/*": ["src/components/*"],
+      "@contexts/*": ["src/contexts/*"],
       "@lib/*": ["./lib/*"]
     }
   },
@@ -32,7 +32,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "src/app/context/managed-ui.jsx"
+    "src/context/managed-ui.jsx"
   ],
   "exclude": ["node_modules"]
 }

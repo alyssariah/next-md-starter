@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc"
+    "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc",
+    "prepare": "husky install",
+    "test": "jest --watch"
   },
   "dependencies": {
     "@types/node": "20.2.1",
@@ -17,13 +19,8 @@
     "autoprefixer": "^10.4.14",
     "body-scroll-lock": "^4.0.0-beta.0",
     "clsx": "^1.2.1",
-    "eslint": "8.41.0",
-    "eslint-config-next": "13.4.3",
-    "eslint-config-prettier": "^8.8.0",
-    "eslint-plugin-prettier": "^4.2.1",
     "next": "13.4.3",
     "postcss": "^8.4.23",
-    "prettier": "^2.8.8",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-markdown": "^8.0.7",
@@ -38,9 +35,25 @@
     "typewriter-effect": "^2.19.0"
   },
   "devDependencies": {
-    "@types/body-scroll-lock": "^3.1.0"
+    "@types/body-scroll-lock": "^3.1.0",
+    "eslint": "8.41.0",
+    "eslint-config-next": "13.4.3",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "husky": ">=7",
+    "jest-environment-jsdom": "^29.5.0",
+    "lint-staged": ">=10",
+    "prettier": "^2.8.8",
+    "jest": "^29.5.0",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^14.0.0"
   },
   "browser": {
     "fs": false
+  },
+  "lint-staged": {
+    "**/*.{js,jsx,ts,tsx}": [
+      "yarn run format"
+    ]
   }
 }

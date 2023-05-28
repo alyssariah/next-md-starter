@@ -1,7 +1,7 @@
 import { fetchContactContent } from '@lib/contact';
 import MarkdownDocument from '@components/markdown-document/MarkdownDocument';
 
-export default function Markdown() {
+export default function Contact() {
   const res = fetchContactContent();
   return (
     <div className="w-[100%] flex flex-col items-center">

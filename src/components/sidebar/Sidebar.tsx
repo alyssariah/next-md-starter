@@ -1,7 +1,7 @@
 'use client'; // This is a client component 👈🏽
 import { useEffect, useRef } from 'react';
 import { disableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock';
-import { useUI } from '@/app/context/managed-ui';
+import { useUI } from '@/contexts/managed-ui';
 
 export const SidebarView = ({ sidebarView, closeSidebar }: any) => {
   return (

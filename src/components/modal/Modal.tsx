@@ -1,7 +1,7 @@
 'use client'; // This is a client component 👈🏽
 import { useRef, useEffect, useCallback, ReactNode } from 'react';
 import { disableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock';
-import { useUI } from '@/app/context/managed-ui';
+import { useUI } from '@/contexts/managed-ui';
 import { Dialog } from '../dialog/Dialog';
 
 export const ModalView = ({ modalView, closeModal, displayModal }: any) => {

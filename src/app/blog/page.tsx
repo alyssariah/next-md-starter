@@ -1,7 +1,7 @@
 import { fetchBlogContent } from '@lib/blog';
 import MarkdownDocument from '@components/markdown-document/MarkdownDocument';
 
-export default function Markdown() {
+export default function Blog() {
   const res = fetchBlogContent();
   return (
     <div className="w-[100%] flex flex-col items-center">

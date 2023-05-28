@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import styles from './hamburger-menu.module.scss';
 
-export const HamburgerMenu = ({ animationType, stroke, active, setActive, ...props }) => {
+export const HamburgerMenu = ({ animationType = 'topX', stroke, active, setActive, ...props }) => {
   const toggleClass = () => {
     setActive(!active);
   };
@@ -224,8 +224,4 @@ HamburgerMenu.propTypes = {
    * Stroke Color
    */
   stroke: PropTypes.string,
-};
-
-HamburgerMenu.defaultProps = {
-  animationType: 'topX',
 };

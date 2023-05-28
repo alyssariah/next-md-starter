@@ -18,19 +18,13 @@ export interface NavbarProps {
   };
 }
 
-export default function Navbar({ logo, links, hamburger }: NavbarProps) {
+export default function Navbar({
+  logo,
+  links = [],
+  hamburger = { animation: '', color: '' },
+}: NavbarProps) {
   const [active, setActive] = useState(false);
   const ref = useRef<null | HTMLDivElement>(null);
-
-  if (!links) {
-    links = [];
-  }
-  if (!hamburger) {
-    hamburger = {
-      animation: '',
-      color: '',
-    };
-  }
 
   useEffect(() => {
     const dropdown = ref.current;

@@ -1,11 +1,14 @@
-import './styles/globals.scss';
-import { ManagedUIContext, useUI } from '@context/managed-ui';
+import '../styles/globals.scss';
+import { ManagedUIContext, useUI } from '@contexts/managed-ui';
 import { ModalUI } from '@components/modal/Modal';
-import { SidebarUI } from '@/app/components/sidebar/Sidebar';
+import { SidebarUI } from '@components/sidebar/Sidebar';
 import Navbar from '@components/navbar/Navbar';
 
 export const metadata = {
-  title: 'Next.js Markdown CMS Starter Code',
+  title: {
+    default: 'Next.js Markdown CMS Starter Code',
+    template: '%s | Markdown CMS',
+  },
   description: 'Create Template with Next pages connected to Markdown',
 };
 
@@ -32,7 +35,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <main className="flex flex-col items-center w-[100%] relative overscroll-none">
             <Navbar links={links} logo="/vercel.svg" />
             {children}
-            {/* Footer Component */}
+            {/* Footer Component  */}
             <ModalUI />
             <SidebarUI />
           </main>
