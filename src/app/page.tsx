@@ -7,7 +7,7 @@ export default function Home() {
 
   return (
     <div className="w-[100%] flex flex-col items-center">
-      <div className="w-[100%] bg-black text-white relative flex justify-center items-center">
+      <div className="w-[100%] bg-blue-500 text-white relative flex justify-center items-center">
         <div className="z-[20] flex flex-col justify-center mb-12 py-40 px-4">
           <h1 className="text-[28px] font-logo text-grey-50 text-center">Markdown CMS</h1>
 
