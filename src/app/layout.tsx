@@ -100,7 +100,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <ManagedUIContext>
           <main className="flex flex-col items-center w-[100%] bg-white-500 text-black-500 relative overscroll-none">
-            <Navbar links={links} format="Center links" />
+            <Navbar
+              links={links}
+              format="Center links"
+              logo={{ image: '/vercel.svg', alt: 'Apps for Scratch Logo', width: 250 }}
+            />
             {children}
             {/* Footer Component  */}
             <ModalUI />
