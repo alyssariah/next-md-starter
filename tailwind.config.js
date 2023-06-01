@@ -57,7 +57,7 @@ module.exports = {
         'black-900': '#000000',
         'nav-light': 'rgba(252, 255, 252, .9)',
         'nav-dark': 'rgba(0, 0, 0, .9)',
-        'dialog-bg': 'rgba(0, 0, 0, .4)',
+        'dialog-bg': 'rgba(0, 0, 0, .3)',
       },
       fontFamily: {
         sans: ['Source Sans Pro', 'sans-serif'],

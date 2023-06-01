@@ -5,12 +5,15 @@ import React, { useCallback, useMemo } from 'react';
 const initialState = {
   displaySidebar: false,
   displayModal: false,
+  displayHamburger: false,
   modalView: 'DEFAULT',
   sidebarView: 'DEFAULT',
-  closeModal: null,
-  openModal: null,
-  closeSidebar: null,
-  openSidebar: null,
+  closeModal: undefined,
+  openModal: undefined,
+  closeHamburger: undefined,
+  openHamburger: undefined,
+  closeSidebar: undefined,
+  openSidebar: undefined,
 };
 
 export const UIContext = React.createContext(initialState);
@@ -56,6 +59,18 @@ function uiReducer(state, action) {
         sidebarView: action.view,
       };
     }
+    case 'OPEN_HAMBURGER': {
+      return {
+        ...state,
+        displayHamburger: true,
+      };
+    }
+    case 'CLOSE_HAMBURGER': {
+      return {
+        ...state,
+        displayHamburger: false,
+      };
+    }
   }
 }
 
@@ -79,6 +94,9 @@ export const UIProvider = (props) => {
   const openModal = useCallback(() => dispatch({ type: 'OPEN_MODAL' }), [dispatch]);
   const closeModal = useCallback(() => dispatch({ type: 'CLOSE_MODAL' }), [dispatch]);
 
+  const openHamburger = useCallback(() => dispatch({ type: 'OPEN_HAMBURGER' }), [dispatch]);
+  const closeHamburger = useCallback(() => dispatch({ type: 'CLOSE_HAMBURGER' }), [dispatch]);
+
   const setModalView = useCallback(
     (view) => dispatch({ type: 'SET_MODAL_VIEW', view }),
     [dispatch]
@@ -100,6 +118,8 @@ export const UIProvider = (props) => {
       closeModal,
       setModalView,
       setSidebarView,
+      openHamburger,
+      closeHamburger,
     }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [state]

@@ -103,7 +103,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <Navbar
               links={links}
               format="Center links"
-              logo={{ image: '/vercel.svg', alt: 'Apps for Scratch Logo', width: 250 }}
+              logo={{ image: '/logo.webp', alt: 'Apps for Scratch Logo', width: 250 }}
             />
             {children}
             {/* Footer Component  */}

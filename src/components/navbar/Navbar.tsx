@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from 'react';
 import clsx from 'clsx';
 import { disableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock';
 import { BsSearch } from 'react-icons/bs';
+import { useUI } from '@/contexts/managed-ui';
 
 export interface NavbarProps {
   logo?: {
@@ -35,18 +36,18 @@ export default function Navbar({
   darkmode = false,
   format = 'Right links',
 }: NavbarProps) {
-  const [active, setActive] = useState(false);
   const ref = useRef<null | HTMLDivElement>(null);
+  const { displayHamburger, openHamburger, closeHamburger } = useUI();
 
   useEffect(() => {
     const dropdown = ref.current;
-    if (active) {
+    if (displayHamburger) {
       disableBodyScroll(dropdown as HTMLElement, { reserveScrollBarGap: false });
     }
     return () => {
       clearAllBodyScrollLocks();
     };
-  }, [active]);
+  }, [displayHamburger]);
 
   return (
     <>
@@ -98,10 +99,10 @@ export default function Navbar({
           </span>
           <div className="block lg:hidden w-[60px]">
             <HamburgerMenu
-              animationType={hamburger.animation ? hamburger.animation : 'rotateX'}
+              animationType={hamburger.animation ? hamburger.animation : 'sweetX'}
               stroke={hamburger.color ? hamburger.color : '#000000'}
-              active={active}
-              setActive={setActive}
+              active={displayHamburger}
+              setActive={displayHamburger ? closeHamburger : openHamburger}
             />
           </div>
         </nav>
@@ -109,23 +110,29 @@ export default function Navbar({
       <div
         ref={ref}
         className={clsx(
-          'lg:hidden w-[100%] h-full box-border bg-dialog-bg overflow-hidden text-black fixed top-[60px] flex justify-end',
+          'lg:hidden w-[100%] h-full box-border bg-dialog-bg overflow-hidden  text-black fixed top-[60px] flex justify-end',
           {
-            ['opacity-100 z-[50]']: active,
-            ['opacity-0 z-[-1]']: !active,
+            ['opacity-[100] z-[50]']: displayHamburger,
+            ['opacity-[0] z-[-1]']: !displayHamburger,
           }
         )}
-        onClick={() => setActive(!active)}
+        onClick={closeHamburger}
       >
         <nav
-          className="w-[100%] max-w-[320px] bg-white-500 text-black-500 py-8"
+          className={clsx(
+            'w-[100%] max-w-[320px] bg-white-500 text-black-500 py-4 transition-translate ease-in duration-200 overflow-hidden',
+            {
+              ['translate-x-[0]']: displayHamburger,
+              ['translate-x-[320px]']: !displayHamburger,
+            }
+          )}
           onClick={(e) => e.stopPropagation()}
         >
           <ul className="flex flex-col">
             {links.map((link, i) => {
               return (
-                <li key={i} className="text-body-lg flex">
-                  <Link href={link.url} className="w-[100%] flex-grow-1 px-6 py-3  h-[100%]">
+                <li key={i} className="text-base flex" onClick={closeHamburger}>
+                  <Link href={link.url} className="w-[100%] flex-grow-1 px-6 py-3 h-[100%]">
                     {link.label}
                   </Link>
                 </li>
