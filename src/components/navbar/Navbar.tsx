@@ -7,6 +7,7 @@ import clsx from 'clsx';
 import { disableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock';
 import { BsPerson } from 'react-icons/bs';
 import { useUI } from '@/contexts/managed-ui';
+import { Button } from '../button/Button';
 
 export interface NavbarProps {
   logo?: {
@@ -37,7 +38,7 @@ export default function Navbar({
   format = 'Right links',
 }: NavbarProps) {
   const ref = useRef<null | HTMLDivElement>(null);
-  const { displayHamburger, openHamburger, closeHamburger } = useUI();
+  const { displayHamburger, openHamburger, closeHamburger, openModal } = useUI();
 
   useEffect(() => {
     const dropdown = ref.current;
@@ -96,8 +97,7 @@ export default function Navbar({
               ['w-[200px] justify-end']: format == 'Center links',
             })}
           >
-            {/* <BsBell className="text-[21px] mr-6" /> */}
-            <BsPerson className="text-[24px]" />
+            <Button label="Open Modal" onClick={openModal} />
           </span>
           <div className="block lg:hidden w-[60px]">
             <HamburgerMenu

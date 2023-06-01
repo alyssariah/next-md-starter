@@ -82,16 +82,8 @@ export const Dialog = ({
           ['flex-col space-y-3']: buttonFlex == 'column',
         })}
       >
-        {/* {rejectButton && (
-            <span onClick={() => setStateChecked(!stateChecked)} className="flex-grow w-[100%]">
-              {rejectButton}
-            </span>
-          )}
-          {confirmButton && (
-            <span onClick={() => setStateChecked(!stateChecked)} className="flex-grow w-[100%]">
-              {confirmButton}
-            </span>
-          )} */}
+        {rejectButton && <span className="flex-grow w-[100%]">{rejectButton}</span>}
+        {confirmButton && <span className="flex-grow w-[100%]">{confirmButton}</span>}
       </div>
     </div>
   );

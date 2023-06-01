@@ -3,12 +3,43 @@ import { useRef, useEffect, useCallback, ReactNode } from 'react';
 import { disableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock';
 import { useUI } from '@/contexts/managed-ui';
 import { Dialog } from '../dialog/Dialog';
+import { IoAlertCircleOutline } from 'react-icons/io5';
+import { Button } from '../button/Button';
 
 export const ModalView = ({ modalView, closeModal, displayModal }: any) => {
   return (
     <Modal onClose={closeModal}>
       {modalView === 'DEFAULT' && (
-        <Dialog modalTitle="Default Title" modalContent="Lorem ipsum description" />
+        <Dialog
+          buttonText="Open the dialog"
+          buttonPrimary="primary"
+          buttonSize="large"
+          buttonShape="square"
+          modalTitle="File Shared"
+          modalContent="All team members will be able to read, write and share this file."
+          boxShadow={4}
+          modalIcon={<IoAlertCircleOutline />}
+          position="center"
+          buttonFlex="row"
+          rejectButton={
+            <Button
+              label="Cancel"
+              shape="square"
+              configuration={'outline'}
+              size="medium"
+              stretch={true}
+            />
+          }
+          confirmButton={
+            <Button
+              label="Confirm"
+              shape="square"
+              configuration={'filled'}
+              size="medium"
+              stretch={true}
+            />
+          }
+        />
       )}
       {modalView === 'ERROR' && <div>Error</div>}
     </Modal>
@@ -48,7 +79,10 @@ export const Modal = ({ children, onClose }: any) => {
   }, [handleKey]);
 
   return (
-    <div className="fixed bg-dialog-bg flex items-center inset-0 z-50 justify-center backdrop-blur-[2px]">
+    <div
+      className="fixed bg-dialog-bg flex items-center inset-0 z-50 justify-center backdrop-blur-[2px]"
+      onClick={onClose}
+    >
       <div className="" role="dialog" ref={ref}>
         {children}
       </div>
