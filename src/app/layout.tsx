@@ -4,6 +4,7 @@ import { ModalUI } from '@components/modal/Modal';
 import { SidebarUI } from '@components/sidebar/Sidebar';
 import Navbar from '@components/navbar/Navbar';
 import { Metadata } from 'next';
+import { Footer } from '@/components/footer/Footer';
 
 export const metadata: Metadata = {
   title: {
@@ -106,7 +107,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               logo={{ image: '/logo.webp', alt: 'Apps for Scratch Logo', width: 250 }}
             />
             {children}
-            {/* Footer Component  */}
+            <Footer />
             <ModalUI />
             <SidebarUI />
           </main>

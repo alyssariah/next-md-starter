@@ -5,7 +5,7 @@ import { HamburgerMenu } from '../hamburger-menu/HamburgerMenu';
 import { useEffect, useRef, useState } from 'react';
 import clsx from 'clsx';
 import { disableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock';
-import { BsSearch } from 'react-icons/bs';
+import { BsPerson } from 'react-icons/bs';
 import { useUI } from '@/contexts/managed-ui';
 
 export interface NavbarProps {
@@ -73,7 +73,8 @@ export default function Navbar({
             })}
           >
             <Link href="/">
-              <Image src={logo.image} alt={logo.alt} width={logo.width} height="100" />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={logo.image} alt={logo.alt} width={logo.width} height="100" />
             </Link>
           </div>
 
@@ -91,11 +92,12 @@ export default function Navbar({
             })}
           </ul>
           <span
-            className={clsx('hidden lg:flex  ml-6', {
+            className={clsx('hidden lg:flex items-center ml-6', {
               ['w-[200px] justify-end']: format == 'Center links',
             })}
           >
-            <BsSearch />
+            {/* <BsBell className="text-[21px] mr-6" /> */}
+            <BsPerson className="text-[24px]" />
           </span>
           <div className="block lg:hidden w-[60px]">
             <HamburgerMenu
